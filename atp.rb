@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby1.9.1
 
 # 2011 Hot Summer in Yugawara Baby
 # Yasuaki Kudo
@@ -30,7 +30,7 @@ class NegationWff <  Wff
 		'(n' + @counter.to_s + ' ' + @arg.who_am_i+')'
 	end
 	def visual 
-		'(Ê' + @counter.to_s + ' ' + @arg.visual+')'
+		'(' + @counter.to_s + ' ' + @arg.visual+')'
 	end
 end
 class BinaryWff < Wff
@@ -52,15 +52,15 @@ class BinaryWff < Wff
 end
 class ConjunctionWff < BinaryWff
 	@designation=:c
-	@visual_designation='È'
+	@visual_designation='è«–ç†ç©'
 end
 class DisjunctionWff < BinaryWff
 	@designation=:d
-	@visual_designation='É'
+	@visual_designation='è«–ç†å’Œ'
 end
 class ImplicationWff < BinaryWff
 	@designation=:i
-	@visual_designation='¨'
+	@visual_designation='å«æ„'
 end
 
 class AtomicWff < Wff
