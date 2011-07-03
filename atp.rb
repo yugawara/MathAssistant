@@ -1,36 +1,43 @@
-#!/usr/bin/env ruby1.9.1
+#!/usr/bin/env ruby
 
-# 2011 Hot Summer in Yugawara Baby
-# Yasuaki Kudo
-
-
-
-class Wff
-	@counter=0
-	attr_reader :counter
-	class << Wff 
-		attr_accessor :counter
-	end
-	def initialize
-		Wff.counter+=1
-		@counter=Wff.counter
-	end
-	def who_am_i
-		self.class.name + @counter.to_s
+# Yasuaki Kudo 
+def wff_init
+	@static_counter = 0
+	attr_accessor :counter
+	def self.add_to_class_counter
+		@static_counter += 1
 	end
 end
-class NegationWff <  Wff
+class Wff
+	def initialize
+		@counter = self.class.add_to_class_counter
+	end
+end
+class AtomicWff < Wff
+	wff_init
+	def who_am_i
+		'p' + self.counter.to_s
+	end
+	def visual 
+		'p' + self.counter.to_s
+	end
+	def initialize
+		super()
+	end
 
+end
+class NegationWff  < Wff
+	wff_init
 	attr_accessor :arg	
 	def initialize wff
 		@arg = wff	
 		super()
 	end
 	def who_am_i
-		'(n' + @counter.to_s + ' ' + @arg.who_am_i+')'
+		'(n' + self.counter.to_s + ' ' + @arg.who_am_i+')'
 	end
 	def visual 
-		'(' + @counter.to_s + ' ' + @arg.visual+')'
+		'(¬ ' + @arg.visual+')'
 	end
 end
 class BinaryWff < Wff
@@ -44,33 +51,30 @@ class BinaryWff < Wff
 		super()
 	end
 	def who_am_i
-		'('+self.class.designation.to_s + @counter.to_s + ' ' + @arg1.who_am_i+ ',' + @arg2.who_am_i+ ')'
+		'('+self.class.designation.to_s + self.counter.to_s + ' ' + @arg1.who_am_i+ ',' + @arg2.who_am_i+ ')'
 	end
 	def visual 
-		'('+self.class.visual_designation + @counter.to_s + ' ' + @arg1.visual+ ',' + @arg2.visual+ ')'
+		"(#{@arg1.visual} #{self.class.visual_designation} #{@arg2.visual})"
 	end
 end
 class ConjunctionWff < BinaryWff
+	wff_init
 	@designation=:c
-	@visual_designation='論理積'
+	@visual_designation='∧'
 end
 class DisjunctionWff < BinaryWff
+	wff_init
+
 	@designation=:d
-	@visual_designation='論理和'
+	@visual_designation='∨'
 end
 class ImplicationWff < BinaryWff
+	wff_init
+
 	@designation=:i
-	@visual_designation='含意'
+	@visual_designation='→'
 end
 
-class AtomicWff < Wff
-	def who_am_i
-		'p' + @counter.to_s
-	end
-	def visual 
-		'p' + @counter.to_s
-	end
-end
 def hello
 	p 3.times.map{|x|AtomicWff.new}.map{|x|x.who_am_i}
 end
@@ -81,10 +85,17 @@ def hello4
 	p 3.times.map{|x|DisjunctionWff.new(AtomicWff.new, AtomicWff.new)}.map{|x|x.who_am_i}
 end
 def hello6
+	DisjunctionWff.new(AtomicWff.new,AtomicWff.new)
 	ImplicationWff.new(
-		AtomicWff.new,
+		NegationWff.new(NegationWff.new(ImplicationWff.new(AtomicWff.new,
+				ConjunctionWff.new(
+					AtomicWff.new,
+					AtomicWff.new)
+				))),
 		DisjunctionWff.new(
-			AtomicWff.new,
+			ConjunctionWff.new(
+				AtomicWff.new,
+				AtomicWff.new),
 			AtomicWff.new
 			)
 		)

@@ -1,0 +1,411 @@
+List of logic symbols
+
+From Wikipedia, the free encyclopedia
+Jump to: navigation, search
+
+ This article contains logic symbols. Without proper rendering support, you may
+ see question marks, boxes, or other symbols instead of logic symbols.
+
+See also: Logical connective
+
+In logic, a set of symbols is commonly used to express logical representation.
+As logicians are familiar with these symbols, they are not explained each time
+they are used. So, for students of logic, the following table lists many common
+symbols together with their name, pronunciation and related field of
+mathematics. Additionally, the third column contains an informal definition,
+and the fourth column gives a short example.
+
+Be aware that, outside of logic, different symbols have the same meaning, and
+the same symbol has, depending on the context, different meanings.
+
+[edit] Basic logic symbols
+
+       Name
+Symbol Should be read   Explanation    Examples      Unicode      HTML       LaTeX
+             as                                       Value      Entity      symbol
+             Category
+                      A ⇒ B means if
+                      A is true then
+       material       B is also true;
+       implication    if A is false
+                      then nothing is
+                      said about B.   x = 2  ⇒ 
+                                      x^2 = 4 is
+                      → may mean the  true, but
+  ⇒                   same as ⇒ (the  x^2 = 4        U+21D2
+       implies; if .. symbol may also   ⇒  x = 2                 &rArr;   \Rightarrow\
+  →         then      indicate the    is in          U+2192      &rarr;    Rightarrow
+                      domain and      general                     &sup;      \to\to
+  ⊃                   codomain of a   false          U+2283              \supset\supset
+                      function; see   (since x
+                      table of        could be
+                      mathematical    −2).
+        propositional symbols).
+       logic, Heyting
+              algebra ⊃ may mean the
+                      same as ⇒ (the
+                      symbol may also
+                      mean superset).
+       material                                                                \
+       equivalence                                                       Leftrightarrow
+  ⇔                   A ⇔ B means A                  U+21D4                    \
+        if and only   is true if and  x + 5 = y                  &hArr;  Leftrightarrow
+  ≡       if; iff     only if B is     +2  ⇔  x      U+2261      &equiv;  \equiv\equiv
+                      true.            + 3 = y                   &harr;        \
+  ↔     propositional                                U+2194              leftrightarrow
+                logic                                                          \
+                                                                         leftrightarrow
+
+       negation       The statement ¬
+                      A is true if
+                      and only if A
+  ¬                   is false.
+            not                       ¬(¬A) ⇔ A      U+00AC       &not;    \lnot\lnot
+  ˜                   A slash placed  x ≠ y  ⇔                   &tilde;     ˜\sim
+                      through another ¬(x =  y)      U+02DC         ~
+  !                   operator is the
+        propositional same as "¬"
+                logic placed in
+                      front.
+
+       logical
+  ∧    conjunction    The statement A n < 4  ∧ 
+                      ∧ B is true if  n >2  ⇔  n     U+2227               \wedge\wedge
+  •         and       A and B are      = 3 when                   &and;     or \land
+                      both true; else n is a         U+0026       &amp;      \&^[1]
+  &     propositional it is false.    natural
+                logic                 number.
+
+       logical        The statement A
+       disjunction    ∨ B is true if  n ≥ 4  ∨ 
+  ∨                   A or B (or      n ≤ 2  ⇔ n
+             or       both) are true;  ≠ 3 when      U+2228       &or;      \lor\lor
+  +                   if both are     n is a
+        propositional false, the      natural
+                logic statement is    number.
+                      false.
+       exclusive
+       disjunction    The statement A (¬A) ⊕ A
+                      ⊕ B is true     is always
+  ⊕         xor       when either A   true, A ⊕      U+2295               \oplus\oplus
+                      or B, but not   A is                       &oplus; \veebar\veebar
+  ⊻     propositional both, are true. always         U+22BB
+       logic, Boolean A ⊻ B means the false.
+              algebra same.
+
+       Tautology
+
+  ⊤         top       The statement ⊤ A ⇒ ⊤ is
+                      is              always         U+22A4         T       \top\top
+  T     propositional unconditionally true.
+       logic, Boolean true.
+  1           algebra
+
+       Contradiction
+
+  ⊥        bottom     The statement ⊥ ⊥ ⇒ A is
+                      is              always         U+22A5      &perp;     \bot\bot
+  F     propositional unconditionally true.                         F
+       logic, Boolean false.
+  0           algebra
+
+       universal
+       quantification ∀ x: P(x) means
+  ∀     for all; for  P(x) is true    ∀ n ∈ N: n     U+2200         &    \forall\forall
+       any; for each  for all x.      ^2 ≥ n.                    forall;
+            predicate
+                logic
+       existential    ∃ x: P(x) means
+       quantification there is at     ∃ n ∈ N: n
+  ∃     there exists  least one x     is even.       U+2203      &exist; \exists\exists
+          first-order such that P(x)
+                logic is true.
+       uniqueness     ∃! x: P(x)
+       quantification means there is  ∃! n ∈ N:
+  ∃!    there exists  exactly one x   n + 5 = 2n  U+2203 U+0021  &exist;   \exists !\
+        exactly one   such that P(x)  .                             !       exists !
+          first-order is true.
+                logic
+                      x := y or x ≡ y
+                      means x is
+       definition     defined to be
+                      another name    cosh x :=
+                      for y (but note (1/2)(exp      U+2254                  : = :=
+  :=                  that ≡ can also x + exp (− (U+003A U+003D)    :=    \equiv\equiv
+                      mean other      x))                          : &         \
+  ≡    is defined as  things, such as                U+2261      equiv;  Leftrightarrow
+                      congruence).    A XOR B :⇔                 &hArr;        \
+  :⇔                                  (A ∨ B)     U+003A U+229C          Leftrightarrow
+                      P :⇔ Q means P   ∧ ¬(A ∧ B
+                      is defined to   )
+           everywhere be logically
+                      equivalent to Q
+                      .
+       precedence     Perform the     (8/4)/2 =
+       grouping       operations      2/2 = 1,
+ ( )                  inside the      but 8/(4/   U+0028 U+0029    ( )      (~) ( )
+                      parentheses     2) = 8/2 =
+           everywhere first.          4.
+
+       inference
+        infers or is
+        derived from  x ⊢ y means y   A → B ⊢ ¬B
+  ⊢     propositional is derived from → ¬A           U+22A2               \vdash\vdash
+              logic,  x.
+          first-order
+                logic
+
+[edit] Advanced and rarely used logical symbols
+
+These symbols are sorted by their Unicode value:
+
+  • U+00B7 ·​ middle dot, an outdated way for denoting AND^[citation needed],
+    still in use in electronics; for example "A·B" is the same as "A&B"
+  • ·: Center dot with a line above it (using HTML style). Outdated way for
+    denoting NAND, for example "A·B" is the same as "A NAND B" or "A|B" or "¬(A
+    & B)". See also Unicode U+22C5 ⋅​ dot operator.
+
+  • U+0305  ̅ ​ combining overline, used as abbreviation for standard numerals.
+    For example, using HTML style "4̅" is a shorthand for the standard numeral
+    "SSSS0".
+  • Overline, is also a rarely used format for denoting Gödel numbers, for
+    example "AVB" says the Gödel number of "(AVB)"
+  • Overline is also an outdated way for denoting negation, still in use in
+    electronics; for example "AVB" is the same as "¬(AVB)"
+
+  • U+2191 ↑​ upwards arrow or U+007C |​ vertical line: Sheffer stroke, the
+    sign for the NAND operator.
+  • U+2201 ∁​ complement
+  • U+2204 ∄​ there does not exist: strike out existential quantifier same as
+    "¬∃"
+  • U+2234 ∴​ therefore
+  • U+2235 ∵​ because
+  • U+22A7 ⊧​ models: is a model of
+  • U+22A8 ⊨​ true: is true of
+  • U+22AC ⊬​ does not prove: negated ⊢, the sign for "does not prove", for
+    example T ⊬ P says "P is not a theorem of T"
+  • U+22AD ⊭​ not true: is not true of
+  • U+22BC ⊼​ nand: another NAND operator, can also be rendered as ∧
+  • U+22BD ⊽​ nor: another NOR operator, can also be rendered as V
+  • U+22C4 ⋄​ diamond operator: modal operator for "it is possible that", "it
+    is not necessarily not" or rarely "it is not provable not" (in most modal
+    logics it is defined as "¬◻¬")
+  • U+22C6 ⋆​ star operator: usually used for ad-hoc operators
+  • U+22A5 ⊥​ up tack or U+2193 ↓​ downwards arrow: Webb-operator or Peirce
+    arrow, the sign for NOR. Confusingly, "⊥" is also the sign for
+    contradiction or absurdity.
+
+  • U+2310 ⌐​ reversed not sign
+
+  • U+231C ⌜​ top left corner and U+231D ⌝​ top right corner: corner quotes,
+    also called "Quine quotes"; the standard symbol used for denoting Gödel
+    number; for example "⌜G⌝" denotes the Gödel number of G. (Typographical
+    note: although the quotes appears as a "pair" in unicode (231C and 231D),
+    they are not symmetrical in some fonts. And in some fonts (for example
+    Arial) they are only symmetrical in certain sizes. Alternatively the quotes
+    can be rendered as ⌈ and ⌉ (U+2308 and U+2309) or by using a negation
+    symbol and a reversed negation symbol ⌐ ¬ in superscript mode. )
+
+  • U+25FB ◻​ white medium square or U+25A1 □​ white square: modal operator for
+    "it is necessary that" (in modal logic), or "it is provable that" (in
+    provability logic), or "it is obligatory that" (in deontic logic), or "it
+    is believed that" (in doxastic logic).
+
+Note that the following operators are rarely supported by natively installed
+fonts. If you wish to use these in a web page, you should always embed the
+necessary fonts so the page viewer can see the web page without having the
+necessary fonts installed in their computer.
+
+  • U+27E1 ⟡​ white concave-sided diamond
+  • U+27E2 ⟢​ white concave-sided diamond with leftwards tick: modal operator
+    for was never
+  • U+27E3 ⟣​ white concave-sided diamond with rightwards tick: modal operator
+    for will never be
+  • U+27E4 ⟤​ white square with leftwards tick: modal operator for was always
+  • U+27E5 ⟥​ white square with rightwards tick: modal operator for will always
+    be
+  • U+297D ⥽​ right fish tail: sometimes used for "relation", also used for
+    denoting various ad hoc relations (for example, for denoting "witnessing"
+    in the context of Rosser's trick) See here for an image of glyph. Added to
+    Unicode 3.2.0.
+
+[edit] See also
+
+Logical connectives Hasse diagram.svg Logic portal
+
+  • Table of mathematical symbols
+  • Polish notation
+  • Logic Alphabet, a suggested set of logical symbols.
+  • Unicode Mathematical Operators
+
+[edit] Notes
+
+ 1. ^ Although this character is available in LaTeX, the Mediawiki TeX system
+    doesn't support this character.
+
+[edit] External links
+
+  • Named character entities in HTML 4.0.
+
+                                v · d · eLogic
+                                Related articles
+             Argumentation theory · Axiology · Critical thinking ·
+             Computability theory · Formal semantics · History of logic ·
+Academic     Informal logic · Logic in computer science · Mathematical logic ·
+areas        Mathematics · Metalogic · Metamathematics · Model theory ·
+             Philosophical logic · Philosophy · Philosophy of logic ·
+             Philosophy of mathematics · Proof theory · Set theory
+             Abduction · Analytic truth · Antinomy · A priori · Deduction ·
+             Definition · Description · Entailment · Induction · Inference ·
+Foundational Logical consequence · Logical form · Logical implication · Logical
+concepts     truth · Name · Necessity · Meaning · Paradox · Possible world ·
+             Presupposition · Probability · Reason · Reasoning · Reference ·
+             Semantics · Statement · Substitution · Syntax · Truth · Truth
+             value · Validity
+                              Philosophical logic
+Critical  Analysis · Ambiguity · Belief · Credibility · Evidence · Explanation 
+thinking  · Explanatory power · Fact · Fallacy · Inquiry · Opinion · Parsimony 
+and       · Premise · Propaganda · Prudence · Reasoning · Relevance · Rhetoric 
+Informal  · Rigor · Vagueness
+logic
+Theories  Constructivism · Dialetheism · Fictionalism · Finitism · Formalism ·
+of        Intuitionism · Logical atomism · Logicism · Nominalism · Platonic
+deduction realism · Pragmatism · Realism
+                         Metalogic and Metamathematics
+Cantor's theorem · Church's theorem · Church's thesis · Consistency · Effective
+method · Foundations of mathematics · Gödel's completeness theorem · Gödel's
+incompleteness theorems · Soundness · Completeness · Decidability ·
+Interpretation · Löwenheim–Skolem theorem · Metatheorem · Satisfiability ·
+Independence · Type–token distinction · Use–mention distinction
+                               Mathematical logic
+              Formal language · Formation rule · Formal system · Deductive
+              system · Formal proof · Formal semantics · Well-formed formula ·
+General       Set · Element · Class · Classical logic · Axiom · Natural
+              deduction · Rule of inference · Relation · Theorem · Logical
+              consequence · Axiomatic system · Type theory · Symbol · Syntax ·
+              Theory
+Traditional   Proposition · Inference · Argument · Validity · Cogency ·
+logic         Syllogism · Square of opposition · Venn diagram
+Propositional
+calculus      Boolean functions · Propositional calculus · Propositional
+and Boolean   formula · Logical connectives · Quantifiers · Truth tables
+logic
+Predicate     First-order · Quantifiers · Predicate · Second-order · Monadic
+              predicate calculus
+              Set · Empty set · Enumeration · Extensionality · Finite set ·
+Set theory    Function · Subset · Power set · Countable set · Recursive set ·
+              Domain · Range · Ordered pair · Uncountable set
+Model theory  Model · Interpretation · Non-standard model · Finite model theory
+               · Truth value · Validity
+Proof theory  Formal proof · Deductive system · Formal system · Theorem ·
+              Logical consequence · Rule of inference · Syntax
+Computability Recursion · Recursive set · Recursively enumerable set · Decision
+theory        problem · Church–Turing thesis · Computable function · Primitive
+              recursive function
+                              Non-classical logic
+Modal logic    Alethic · Axiologic · Deontic · Doxastic · Epistemic · Temporal
+               Intuitionistic logic · Constructive analysis · Heyting
+Intuitionism   arithmetic · Intuitionistic type theory · Constructive set
+               theory
+Fuzzy logic    Degree of truth · Fuzzy rule · Fuzzy set · Fuzzy finite element 
+               · Fuzzy set operations
+Substructural  Structural rule · Relevance logic · Linear logic
+logic
+Paraconsistent Dialetheism
+logic
+Description    Ontology  · Ontology language
+logic
+                                   Logicians
+Anderson · Aristotle · Averroes · Avicenna · Bain · Barwise · Bernays · Boole ·
+Boolos · Cantor · Carnap · Church · Chrysippus · Curry · De Morgan · Frege ·
+Geach · Gentzen · Gödel · Hilbert · Kleene · Kripke · Leibniz · Löwenheim ·
+Peano · Peirce · Putnam · Quine · Russell · Schröder · Scotus · Skolem ·
+Smullyan · Tarski · Turing · Whitehead · William of Ockham · Wittgenstein ·
+Zermelo
+                                     Lists
+Topics Outline of logic · Index of logic articles · Mathematical logic ·
+       Boolean algebra · Set theory
+Other  Logicians · Rules of inference · Paradoxes · Fallacies · Logic symbols
+Portal · Category · Outline · WikiProject · Talk · changes
+Retrieved from "http://en.wikipedia.org/wiki/List_of_logic_symbols"
+Categories: Mathematical notation | Logical symbols
+Hidden categories: All articles with unsourced statements | Articles with
+unsourced statements from November 2010
+
+Personal tools
+
+  • Log in / create account
+
+Namespaces
+
+  • Article
+  • Discussion
+
+Variants 
+
+Views
+
+  • Read
+  • Edit
+  • View history
+
+Actions 
+
+Search
+
+[                    ] Search
+ 
+
+Navigation
+
+  • Main page
+  • Contents
+  • Featured content
+  • Current events
+  • Random article
+  • Donate to Wikipedia
+
+Interaction
+
+  • Help
+  • About Wikipedia
+  • Community portal
+  • Recent changes
+  • Contact Wikipedia
+
+Toolbox
+
+  • What links here
+  • Related changes
+  • Upload file
+  • Special pages
+  • Permanent link
+  • Cite this page
+
+Print/export
+
+  • Create a book
+  • Download as PDF
+  • Printable version
+
+Languages
+
+  • Latina
+  • Lietuvių
+  • Македонски
+  • 中文
+
+  • This page was last modified on 21 June 2011 at 17:44.
+  • Text is available under the Creative Commons Attribution-ShareAlike License
+     ; additional terms may apply. See Terms of use for details.
+    Wikipedia® is a registered trademark of the Wikimedia Foundation, Inc., a
+    non-profit organization.
+  • Contact us
+
+  • Privacy policy
+  • About Wikipedia
+  • Disclaimers
+
+  • Wikimedia Foundation
+  • Powered by MediaWiki
+
