@@ -3,7 +3,7 @@
 # Yasuaki Kudo 
 def wff_init
 	@static_counter = 0
-	attr_accessor :counter
+	attr_reader :counter
 	def self.add_to_class_counter
 		@static_counter += 1
 	end
@@ -12,6 +12,7 @@ class Wff
 	def initialize
 		@counter = self.class.add_to_class_counter
 	end
+		
 end
 class AtomicWff < Wff
 	wff_init
@@ -19,10 +20,16 @@ class AtomicWff < Wff
 		'p' + self.counter.to_s
 	end
 	def visual 
+		name
+	end
+	def name 
 		'p' + self.counter.to_s
 	end
 	def initialize
 		super()
+	end
+	def atomic_wffs
+		[self]
 	end
 
 end
@@ -38,6 +45,9 @@ class NegationWff  < Wff
 	end
 	def visual 
 		'(¬ ' + @arg.visual+')'
+	end
+	def atomic_wffs
+		arg.atomic_wffs
 	end
 end
 class BinaryWff < Wff
@@ -55,6 +65,9 @@ class BinaryWff < Wff
 	end
 	def visual 
 		"(#{@arg1.visual} #{self.class.visual_designation} #{@arg2.visual})"
+	end
+	def atomic_wffs
+		arg1.atomic_wffs + arg2.atomic_wffs
 	end
 end
 class ConjunctionWff < BinaryWff
@@ -85,7 +98,6 @@ def hello4
 	p 3.times.map{|x|DisjunctionWff.new(AtomicWff.new, AtomicWff.new)}.map{|x|x.who_am_i}
 end
 def hello6
-	DisjunctionWff.new(AtomicWff.new,AtomicWff.new)
 	ImplicationWff.new(
 		NegationWff.new(NegationWff.new(ImplicationWff.new(AtomicWff.new,
 				ConjunctionWff.new(
@@ -103,4 +115,6 @@ end
 h = hello6
 p h.who_am_i
 puts h.visual
-
+list =  h.atomic_wffs.map{|x|x.name}
+p list
+puts 2 ** list.length
