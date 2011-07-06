@@ -16,6 +16,7 @@ class Wff
 end
 class AtomicWff < Wff
 	wff_init
+	attr_accessor :value
 	def who_am_i
 		'p' + self.counter.to_s
 	end
@@ -32,6 +33,7 @@ class AtomicWff < Wff
 		[self]
 	end
 
+
 end
 class NegationWff  < Wff
 	wff_init
@@ -47,7 +49,10 @@ class NegationWff  < Wff
 		'(¬ ' + @arg.visual+')'
 	end
 	def atomic_wffs
-		arg.atomic_wffs
+		@arg.atomic_wffs
+	end
+	def value
+		not @arg.value
 	end
 end
 class BinaryWff < Wff
@@ -67,25 +72,35 @@ class BinaryWff < Wff
 		"(#{@arg1.visual} #{self.class.visual_designation} #{@arg2.visual})"
 	end
 	def atomic_wffs
-		arg1.atomic_wffs + arg2.atomic_wffs
+		@arg1.atomic_wffs + @arg2.atomic_wffs
 	end
 end
 class ConjunctionWff < BinaryWff
 	wff_init
 	@designation=:c
 	@visual_designation='∧'
+	def value
+		@arg1.value and  @arg2.value
+	end
 end
 class DisjunctionWff < BinaryWff
 	wff_init
 
 	@designation=:d
 	@visual_designation='∨'
+	def value
+		@arg1.value or @arg2.value
+	end
 end
 class ImplicationWff < BinaryWff
 	wff_init
 
 	@designation=:i
 	@visual_designation='→'
+
+	def value
+		(not @arg1.value) or (@arg1.value and @arg2.value)
+	end
 end
 
 def hello
@@ -115,6 +130,16 @@ end
 h = hello6
 p h.who_am_i
 puts h.visual
-list =  h.atomic_wffs.map{|x|x.name}
+atomic_wffs = h.atomic_wffs
+list =  atomic_wffs.map{|x|x.name}
+atomic_wffs[0].value=true
+p atomic_wffs[0].value
+p NegationWff.new(atomic_wffs[0]).value
+atomic_wffs[1].value=false
+atomic_wffs[2].value=true
+atomic_wffs[3].value=true
+atomic_wffs[4].value=true
+atomic_wffs[5].value=false
 p list
+p h.value
 puts 2 ** list.length
