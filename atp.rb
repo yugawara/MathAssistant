@@ -33,6 +33,9 @@ class AtomicWff < Wff
 		[self]
 	end
 
+	def sub_wffs
+		atomic_wffs
+	end
 
 end
 class NegationWff  < Wff
@@ -54,6 +57,13 @@ class NegationWff  < Wff
 	def value
 		not @arg.value
 	end
+	def sub_wffs
+		if @arg.kind_of? AtomicWff
+			[self]
+		else
+			[self] + @arg.sub_wffs 
+		end
+	end
 end
 class BinaryWff < Wff
 	attr_accessor :arg1,:arg2
@@ -73,6 +83,18 @@ class BinaryWff < Wff
 	end
 	def atomic_wffs
 		@arg1.atomic_wffs + @arg2.atomic_wffs
+	end
+	def sub_wffs
+		v1 = if @arg1.kind_of? AtomicWff
+				[self]
+			else
+				[self] + @arg1.sub_wffs 
+			end
+		v2 = if @arg2.kind_of? AtomicWff
+				v1
+			else
+				v1 + @arg2.sub_wffs 
+			end
 	end
 end
 class ConjunctionWff < BinaryWff
@@ -127,19 +149,32 @@ def hello6
 			)
 		)
 end
-h = hello6
-p h.who_am_i
-puts h.visual
-atomic_wffs = h.atomic_wffs
-list =  atomic_wffs.map{|x|x.name}
-atomic_wffs[0].value=true
-p atomic_wffs[0].value
-p NegationWff.new(atomic_wffs[0]).value
-atomic_wffs[1].value=false
-atomic_wffs[2].value=true
-atomic_wffs[3].value=true
-atomic_wffs[4].value=true
-atomic_wffs[5].value=false
-p list
-p h.value
-puts 2 ** list.length
+
+def dostuff h
+	#p h.who_am_i
+	puts h.visual
+	atomic_wffs = h.atomic_wffs
+	list =  atomic_wffs.map{|x|x.name}
+	#p list
+	#p h.value
+	def f size
+		masks = (size-1).downto(0).map{|s|
+			2 ** s 
+		}
+		(2 ** size).times.map{|x|
+			masks.map{|mask|(x & mask)==0}
+			}
+	end
+	f(atomic_wffs.length).each{|x|
+		x.each_with_index{|y,i|
+			atomic_wffs[i].value = y
+			}
+			puts "#{h.value}|" + atomic_wffs.map{|x|x.value}.join(",")
+		}
+end
+puts hello6.sub_wffs.map{|x|x.visual}
+exit
+dostuff NegationWff.new(AtomicWff.new)
+some_wff = AtomicWff.new
+dostuff ImplicationWff.new(ConjunctionWff.new(some_wff, NegationWff.new(some_wff)),AtomicWff.new)
+#dostuff hello6
