@@ -58,11 +58,7 @@ class NegationWff  < Wff
 		not @arg.value
 	end
 	def sub_wffs
-		if @arg.kind_of? AtomicWff
-			[self]
-		else
-			[self] + @arg.sub_wffs 
-		end
+		[self] + @arg.sub_wffs 
 	end
 end
 class BinaryWff < Wff
@@ -85,16 +81,7 @@ class BinaryWff < Wff
 		@arg1.atomic_wffs + @arg2.atomic_wffs
 	end
 	def sub_wffs
-		v1 = if @arg1.kind_of? AtomicWff
-				[self]
-			else
-				[self] + @arg1.sub_wffs 
-			end
-		v2 = if @arg2.kind_of? AtomicWff
-				v1
-			else
-				v1 + @arg2.sub_wffs 
-			end
+		[self] + @arg1.sub_wffs + @arg2.sub_wffs
 	end
 end
 class ConjunctionWff < BinaryWff
