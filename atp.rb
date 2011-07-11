@@ -9,10 +9,10 @@ def wff_init
 	end
 end
 class Wff
+		
 	def initialize
 		@counter = self.class.add_to_class_counter
 	end
-		
 end
 class AtomicWff < Wff
 	wff_init
@@ -78,7 +78,8 @@ class BinaryWff < Wff
 		"(#{@arg1.visual} #{self.class.visual_designation} #{@arg2.visual})"
 	end
 	def atomic_wffs
-		@arg1.atomic_wffs + @arg2.atomic_wffs
+		result =  @arg1.atomic_wffs + @arg2.atomic_wffs
+		result.uniq
 	end
 	def sub_wffs
 		[self] + @arg1.sub_wffs + @arg2.sub_wffs
@@ -141,6 +142,7 @@ def dostuff h
 	#p h.who_am_i
 	puts h.visual
 	atomic_wffs = h.atomic_wffs
+	p atomic_wffs
 	list =  atomic_wffs.map{|x|x.name}
 	#p list
 	#p h.value
@@ -152,16 +154,27 @@ def dostuff h
 			masks.map{|mask|(x & mask)==0}
 			}
 	end
+	val = []
 	f(atomic_wffs.length).each{|x|
 		x.each_with_index{|y,i|
 			atomic_wffs[i].value = y
 			}
-			puts "#{h.value}|" + atomic_wffs.map{|x|x.value}.join(",")
+			val << yield(h,atomic_wffs)
 		}
+		val
 end
+
+some_wff = AtomicWff.new
+p dostuff(ImplicationWff.new(ConjunctionWff.new(some_wff, NegationWff.new(AtomicWff.new)),AtomicWff.new)){|h,atomic_wffs|
+			h.value
+			}
+exit
+dostuff(NegationWff.new(AtomicWff.new)) {|h,atomic_wffs|
+			puts "#{h.value}|" + atomic_wffs.map{|x|x.value}.join(",")
+			}
+exit
 puts hello6.sub_wffs.map{|x|x.visual}
 exit
 dostuff NegationWff.new(AtomicWff.new)
-some_wff = AtomicWff.new
 dostuff ImplicationWff.new(ConjunctionWff.new(some_wff, NegationWff.new(some_wff)),AtomicWff.new)
 #dostuff hello6
